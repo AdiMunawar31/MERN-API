@@ -1,0 +1,72 @@
+STANDARD API
+
+{root.api}/{version}/{grouping}/{endpoint}
+
+SAMPLE
+http://api.d2ycoding.com/v1/auth/login
+
+STANDAR STATUS RESPONSE
+    200 -- OK                       --> CALL API SUCCESS
+    201 -- CREATED                  --> POST SUCCESS
+    400 -- BAD REQUEST              --> ERROR ON CLIENT SIDE
+    401 -- UNAUTHORIZED             --> USER NOT AUTHORIZED TO THE REQUEST 
+    403 -- FORBIDDEN                --> USER NOT ALLOWED TO ACCESS 
+    404 -- NOT FOUND                --> REQUEST ENDPOINT NOT FOUND
+    500 -- INTERNAL SERVER ERROR    --> ERROR ON SERVER SIDE 
+    502 -- BAD GATEWAY              --> INVALID RESPONSE FROM ANOTHER REQUEST 
+
+GROUP : AUTHENTICATION
+
+[1] - Registration
+{root.api}/{version}/auth/registration
+
+req: 
+{
+    "name": "Testing",
+    "email": "test@email.com",
+    "password": 12345678
+}
+
+res: 
+{
+    "message": "Registration Success",
+    "data": {
+        "id": 1,
+        "name": "Testing",
+        "email": "test@email.com",
+        "password": 12345678
+    }
+}
+
+err-response: {
+    201 -> registrasi berhasil
+    400 -> Input yang anda masukan tidak valid
+}
+
+[2] - Login
+{root.api}/{version}/auth/login
+
+req: 
+{
+    "name": "Testing",
+    "email": "test@email.com",
+    "password": 12345678
+}
+
+res: 
+{
+    "message": "Login Success",
+    "data": {
+        "id": 1,
+        "name": "Testing",
+        "email": "test@email.com",
+        "password": 12345678
+    }
+}
+
+GROUP : BLOG
+
+[1] -  CREATE BLOG POST
+[2] -  GET BLOG POST
+[3] -  UPDATE BLOG POST
+[4] -  DELETE BLOG POST
